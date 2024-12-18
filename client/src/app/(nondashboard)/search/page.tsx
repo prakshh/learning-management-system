@@ -42,46 +42,48 @@ const Search = () => {
         });
     };
 
-    return <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="search"
-    >
-        <h1 className="search__title">List of available courses</h1>
-        <h2 className="search__subtitle">{courses.length} courses avaiable</h2>
-        <div className="search__content">
-            <motion.div
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="search__courses-grid"
-            >
-            {courses.map((course) => (
-                <CourseCardSearch
-                key={course.courseId}
-                course={course}
-                isSelected={selectedCourse?.courseId === course.courseId}
-                onClick={() => handleCourseSelect(course)}
-                />
-            ))}
-            </motion.div>
-
-            {selectedCourse && (
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="search"
+        >
+            <h1 className="search__title">List of available courses</h1>
+            <h2 className="search__subtitle">{courses.length} courses avaiable</h2>
+            <div className="search__content">
                 <motion.div
                     initial={{ y: 40, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    className="search__selected-course"
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="search__courses-grid"
                 >
-                    <SelectedCourse
-                        course={selectedCourse}
-                        handleEnrollNow={handleEnrollNow}
+                {courses.map((course) => (
+                    <CourseCardSearch
+                    key={course.courseId}
+                    course={course}
+                    isSelected={selectedCourse?.courseId === course.courseId}
+                    onClick={() => handleCourseSelect(course)}
                     />
+                ))}
                 </motion.div>
-            )}
-        </div>
-    </motion.div>
+
+                {selectedCourse && (
+                    <motion.div
+                        initial={{ y: 40, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="search__selected-course"
+                    >
+                        <SelectedCourse
+                            course={selectedCourse}
+                            handleEnrollNow={handleEnrollNow}
+                        />
+                    </motion.div>
+                )}
+            </div>
+        </motion.div>
+    )
 };
 
 export default Search
