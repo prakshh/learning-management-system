@@ -22,6 +22,7 @@
     "express": "^4.21.1",
     "helmet": "^8.0.0",
     "morgan": "^1.10.0",
+    "pluralize": "^8.0.0",
     "uuid": "^11.0.3"
   },
   "devDependencies": {
