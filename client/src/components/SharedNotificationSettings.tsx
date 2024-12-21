@@ -10,6 +10,8 @@ import { useUser } from "@clerk/nextjs";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Header from "./Header";
+import { Form } from "@/components/ui/form";
+import { CustomFormField } from "./CustomFormField";
 
 const SharedNotificationSettings = ({
   title = "Notification Settings",
@@ -54,9 +56,25 @@ const SharedNotificationSettings = ({
 
   if (!user) return <div>Please sign in to manage your settings.</div>;
 
-  return <div className="notification-settings">
-    <Header title={title} subtitle={subtitle} />
-  </div>
+  return (
+    <div className="notification-settings">
+      <Header title={title} subtitle={subtitle} />
+      <Form {...methods}>
+        <form
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="notification-settings__form"
+        >
+          <div className="notification-settings__fields">
+            <CustomFormField
+              name="courseNotifications"
+              label="Course Notifications"
+              type="switch"
+            />
+          </div>
+        </form>
+      </Form>
+    </div>
+  )
 };
 
 export default SharedNotificationSettings;
