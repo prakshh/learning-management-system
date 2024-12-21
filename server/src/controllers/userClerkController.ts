@@ -15,7 +15,7 @@ export const updateUser = async (
       },
     });
 
-    res.json({ message: "User updated successfully", data: user });
+    res.json({ message: "User updated successfully", data: user });   // data: user must be present for update settings button in user settings page
   } catch (error) {
     res.status(500).json({ message: "Error updating user", error });
   }
